@@ -1,8 +1,8 @@
 [project]
-name = "llm_tests_mr.randall"
+name = "llm-tests"
 version = "0.0.1"
 authors = [
-  { name="Chris Randall" },
+  { name="Chris Randall", email="" },
 ]
 description = "LLM Tests"
 readme = "README.md"
@@ -17,6 +17,7 @@ license-files = ["LICEN[CS]E*"]
 [project.urls]
 Homepage = "https://github.com/mr-randall/llm-tests"
 Issues = "https://github.com/mr-randall/llm-tests/issues"
+Source = "https://github.com/mr-randall/llm-tests"
 
 [build-system]
 requires = ["hatchling >= 1.26"]
