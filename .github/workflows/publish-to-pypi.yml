@@ -5,10 +5,25 @@ jobs:
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4  
       with:
-        persist-credentials: false
+        fetch-depth: 0
+        fetch-tags: true
+        # TODO: Use persist-credentials to improve security
+        #  persist-credentials: false
+    - name: Increment tag
+      run: |
+        cd ${{ github.workspace }}
+        pwd
+        ls
+        git describe --abbrev=0 --tags
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git status
+        ./increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -29,7 +44,7 @@ jobs:
   publish-to-pypi:
     name: >-
       Publish Python 🐍 distribution 📦 to PyPI
-    if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/') && github.ref == 'refs/heads/main'  # only publish to PyPI on main tag pushes
     needs:
     - build
     runs-on: ubuntu-latest
