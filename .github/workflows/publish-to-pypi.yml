@@ -16,8 +16,10 @@ jobs:
       run: |
         cd ${{ github.workspace }}
         pwd
+        ls
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
+        git status
         ./increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
