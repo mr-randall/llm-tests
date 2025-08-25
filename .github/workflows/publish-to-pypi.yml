@@ -11,7 +11,7 @@ jobs:
         persist-credentials: false
     - name: Increment tag
       run: >-
-        increment_tag.sh
+        $GITHUB_WORKSPACE/increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
