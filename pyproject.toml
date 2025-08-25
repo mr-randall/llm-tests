@@ -1,6 +1,6 @@
 [project]
 name = "llm-tests"
-version = "0.0.1"
+dynamic = ["version"]
 authors = [
   { name="Chris Randall", email="" },
 ]
