@@ -9,8 +9,6 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
     - name: Increment tag
       run: |
         git config user.name "github-actions[bot]"
