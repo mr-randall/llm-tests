@@ -14,10 +14,10 @@ jobs:
       #  persist-credentials: false
     - name: Increment tag
       run: |
-        cd "$GITHUB_WORKSPACE"
+        cd $GITHUB_WORKSPACE
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        $GITHUB_WORKSPACE/increment_tag.sh
+        increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
