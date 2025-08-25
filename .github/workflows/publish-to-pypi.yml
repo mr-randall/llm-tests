@@ -15,6 +15,7 @@ jobs:
     - name: Increment tag
       run: |
         cd ${{ github.workspace }}
+        pwd
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         ./increment_tag.sh
