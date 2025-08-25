@@ -12,12 +12,12 @@ jobs:
       with:
         persist-credentials: false
     - name: Increment tag
-      run: >-
+      run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         $GITHUB_WORKSPACE/increment_tag.sh
       env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
