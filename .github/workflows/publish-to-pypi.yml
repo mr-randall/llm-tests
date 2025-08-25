@@ -9,6 +9,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
         persist-credentials: false
+    - name: Increment tag
+      run: >-
+        increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -29,7 +32,7 @@ jobs:
   publish-to-pypi:
     name: >-
       Publish Python 🐍 distribution 📦 to PyPI
-    if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/') && github.ref == 'refs/heads/main'  # only publish to PyPI on main tag pushes
     needs:
     - build
     runs-on: ubuntu-latest
