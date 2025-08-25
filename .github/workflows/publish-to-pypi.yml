@@ -13,11 +13,11 @@ jobs:
       #with:
       #  persist-credentials: false
     - name: Increment tag
+      working-directory: ${{ github.workspace }}
       run: |
-        cd ${{ github.workspace }}
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        increment_tag.sh
+        ./increment_tag.sh
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
